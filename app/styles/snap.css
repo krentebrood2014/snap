@@ -1,0 +1,12 @@
+.spade { background-position: 5px 0px; }
+.heart { background-position: -50px 0px; }
+.diamond { background-position: 5px -50px; }
+.club { background-position: -50px -50px; }
+
+.spade, .heart, .diamond, .club {
+	height: 50px; width: 50px;
+	background-image: url('../images/French_suits.svg');
+	background-repeat : no-repeat;
+  	overflow          : hidden;
+  	background-size: 100px auto;
+}
