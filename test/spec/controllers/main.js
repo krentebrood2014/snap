@@ -56,4 +56,10 @@ describe('Snap test Controller: MainCtrl', function () {
     expect(scope.switchTurns).toHaveBeenCalledWith(true);
   });
 
+  it('cpu wins game',function(){
+    scope.cpuCards=[{number: 6, suit: 'h'},{number: 6, suit: 's'}];
+    scope.playerCards=[];
+    scope.checkWinner(1);
+    expect(scope.winner).toEqual('CPU wins the game!!');
+  });
 });
