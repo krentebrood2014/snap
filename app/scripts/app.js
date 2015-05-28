@@ -1,14 +1,7 @@
 'use strict';
 
 angular
-  .module('kitApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
+  .module('kitApp', ['ngRoute'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

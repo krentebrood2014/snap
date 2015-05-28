@@ -54,7 +54,5 @@ angular.module('kitApp')
     }
 
     //start game
-    $scope.startGame(1,[],[]);
-
-
+    $scope.startGame($scope.playerTurn, ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'], ['s', 'h', 'd', 'c']);
   });

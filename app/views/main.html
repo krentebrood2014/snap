@@ -1,7 +1,26 @@
-<header>Snap</header>
-
 <section id="game-table">
+
+  <!--cpu cards-->
+  <div ng-class="{turn:playerTurn,noturn:!playerTurn}">cpu has {{cpuCards.length}} cards</div>
+
+  <!--centrepile-->
+  <div class="centre" ng-click="checkSnapTakeCentrePile(0)">
+    <h1>{{centrePileCards[0].number}}</h1>
+    <img
+      ng-class="{'spade':centrePileCards[0].suit=='s','heart':centrePileCards[0].suit=='h','diamond':centrePileCards[0].suit=='d','club':centrePileCards[0].suit=='c'}"/>
+  </div>
+
+  <!--player cards-->
+  <div ng-class="{turn:!playerTurn,noturn:playerTurn}" ng-click="placeCardCentrePile(0);">player has {{playerCards.length}} cards</div>
 </section>
+
+
 
 <section id="game-controls">
+  <button class="btn btn-warning startbtn" ng-click="start()">Start game</button>
+
+  <h3> Centrepile: {{centrePileCards.length}} cards</h3>
+
+  <h4>Reaction time:{{reactionTimeCpu/1000}} seconds</h4><input id="slider" type="range" min="0" max="10000" step="1000" ng-model="reactionTimeCpu"/>
 </section>
+
