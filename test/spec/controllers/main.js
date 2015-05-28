@@ -35,7 +35,7 @@ describe('Snap test Controller: MainCtrl', function () {
     scope.centrePileCards=[{number: 6, suit: 'h'},{number: 3, suit: 'h'}];
     scope.cpuCards=[];
     scope.playerCards=[{number: 6, suit: 'c'}];
-    scope.checkSnapTakeCentrePile(1)
+    scope.checkSnapTakeCentrePile(1);
     expect(scope.cpuCards.length).toBe(2);
     expect(scope.centrePileCards.length).toBe(0);
   });
@@ -44,7 +44,7 @@ describe('Snap test Controller: MainCtrl', function () {
     scope.centrePileCards=[{number: 6, suit: 'h'},{number: 3, suit: 'h'},{number: 3, suit: 'h'},{number: 3, suit: 'h'}];
     scope.playerCards=[];
     scope.cpuCards=[];
-    scope.checkSnapTakeCentrePile(0)
+    scope.checkSnapTakeCentrePile(0);
     expect(scope.cpuCards.length).toBe(0);
     expect(scope.playerCards.length).toBe(4);
     expect(scope.centrePileCards.length).toBe(0);
