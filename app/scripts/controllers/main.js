@@ -2,7 +2,7 @@
 
 
 angular.module('kitApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, _) {
 
     //declare variables
     $scope.playerCards = [];
@@ -20,7 +20,7 @@ angular.module('kitApp')
       $scope.reactionTimeCpu = 2000;
       $scope.snapper = '';
       $scope.winner = '';
-      console.log('start game');
+
       //choose random player
       $scope.playerTurn = Math.random() > 0.5 ? 1 : 0;
 
@@ -57,7 +57,7 @@ angular.module('kitApp')
       $scope.snapper = '';
       $scope.winner = '';
       $scope.snap = false;
-      if (p == 0 && $scope.playerCards.length > 0) {
+      if ($scope.playerCards.length > 0) {
         $scope.centrePileCards.unshift($scope.playerCards[0]);
         $scope.playerCards.splice(0, 1)
       }
@@ -67,6 +67,22 @@ angular.module('kitApp')
           $scope.centrePileCards.unshift($scope.cpuCards[0]);
           $scope.cpuCards.splice(0, 1)
         }
+      }
+    }
+
+    $scope.checkSnapTakeCentrePile = function (p) {
+      if ($scope.centrePileCards.length > 1 && $scope.centrePileCards[0].suit == $scope.centrePileCards[1].suit) {
+        $scope.snapper = (p == 0 ? 'Player' : 'CPU') + ' calls snap';
+
+        debugger;
+        console.log('player calls snap:', p)
+        if (p) {
+          $scope.cpuCards = _.union($scope.cpuCards, $scope.centrePileCards);
+        }
+        else {
+          $scope.playerCards = _.union($scope.playerCards, $scope.centrePileCards);
+        }
+        $scope.centrePileCards = [];
       }
     }
 

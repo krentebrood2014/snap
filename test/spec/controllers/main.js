@@ -32,5 +32,14 @@ describe('Snap test Controller: MainCtrl', function () {
     expect(scope.centrePileCards.length).toBe(3);
   });
 
+  it('player checks snap',function(){
+    scope.centrePileCards=[{number: 6, suit: 'h'},{number: 3, suit: 'h'}];
+    scope.cpuCards=[];
+    scope.playerCards=[{number: 6, suit: 'c'}];
+    scope.checkSnapTakeCentrePile(1)
+    expect(scope.cpuCards.length).toBe(2);
+    expect(scope.centrePileCards.length).toBe(0);
+  });
+
 
 });

@@ -1,5 +1,7 @@
 <section id="game-table">
 
+
+  <h3>{{snapper}}</h3>
   <!--cpu cards-->
   <div ng-class="{turn:playerTurn,noturn:!playerTurn}">cpu has {{cpuCards.length}} cards</div>
 
@@ -13,7 +15,6 @@
   <!--player cards-->
   <div ng-class="{turn:!playerTurn,noturn:playerTurn}" ng-click="placeCardCentrePile(0);">player has {{playerCards.length}} cards</div>
 </section>
-
 
 
 <section id="game-controls">
