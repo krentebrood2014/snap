@@ -41,5 +41,20 @@ describe('Snap test Controller: MainCtrl', function () {
     expect(scope.centrePileCards.length).toBe(0);
   });
 
+  it('person calls snap takes centrepile',function(){
+    scope.centrePileCards=[{number: 6, suit: 'h'},{number: 3, suit: 'h'},{number: 3, suit: 'h'},{number: 3, suit: 'h'}];
+    scope.playerCards=[];
+    scope.cpuCards=[];
+    scope.checkSnapTakeCentrePile(0)
+    expect(scope.cpuCards.length).toBe(0);
+    expect(scope.playerCards.length).toBe(4);
+    expect(scope.centrePileCards.length).toBe(0);
+  });
+
+  it('should switch turns after placing card',function(){
+    spyOn(scope,'switchTurns');
+    scope.placeCardCentrePile(0);
+    expect(scope.switchTurns).toHaveBeenCalledWith(true);
+  });
 
 });

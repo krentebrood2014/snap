@@ -8,12 +8,12 @@
   <!--centrepile-->
   <div class="centre" ng-click="checkSnapTakeCentrePile(0)">
     <h1>{{centrePileCards[0].number}}</h1>
-    <img
-      ng-class="{'spade':centrePileCards[0].suit=='s','heart':centrePileCards[0].suit=='h','diamond':centrePileCards[0].suit=='d','club':centrePileCards[0].suit=='c'}"/>
+    <img ng-class="{'spade':centrePileCards[0].suit=='s','heart':centrePileCards[0].suit=='h','diamond':centrePileCards[0].suit=='d','club':centrePileCards[0].suit=='c'}"/>
   </div>
 
   <!--player cards-->
   <div ng-class="{turn:!playerTurn,noturn:playerTurn}" ng-click="placeCardCentrePile(0);">player has {{playerCards.length}} cards</div>
+
 </section>
 
 

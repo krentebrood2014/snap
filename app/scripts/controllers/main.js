@@ -2,8 +2,7 @@
 
 
 angular.module('kitApp')
-  .controller('MainCtrl', function ($scope, _) {
-
+  .controller('MainCtrl', function ($scope, _,$timeout) {
     //declare variables
     $scope.playerCards = [];
     $scope.cpuCards = [];
@@ -20,9 +19,6 @@ angular.module('kitApp')
       $scope.reactionTimeCpu = 2000;
       $scope.snapper = '';
       $scope.winner = '';
-
-      //choose random player
-      $scope.playerTurn = Math.random() > 0.5 ? 1 : 0;
 
       var cards = [];
       $scope.snap = false;
@@ -53,11 +49,11 @@ angular.module('kitApp')
     }
 
     //player p (integer ) picks card from their pile and places it on centre pile
+    //switch turns after
     $scope.placeCardCentrePile = function (p) {
       $scope.snapper = '';
       $scope.winner = '';
-      $scope.snap = false;
-      if ($scope.playerCards.length > 0) {
+      if (p == 0 && $scope.playerCards.length > 0) {
         $scope.centrePileCards.unshift($scope.playerCards[0]);
         $scope.playerCards.splice(0, 1)
       }
@@ -68,13 +64,34 @@ angular.module('kitApp')
           $scope.cpuCards.splice(0, 1)
         }
       }
+      $scope.switchTurns(!p);
+    }
+
+    //player switchturn
+    //when the current player is 'cpu' trigger place card
+    $scope.switchTurns=function(p)
+    {
+      $scope.playerTurn=p;
+
+      //when the player is cpu trigger a placeCardCentrePile+ checksnap
+      if (p == 1) {
+        $timeout(function () {
+          $scope.placeCardCentrePile(1);
+        }, 1000);
+
+        if ($scope.centrePileCards.length > 1 && $scope.centrePileCards[0].suit == $scope.centrePileCards[1].suit) {
+          //delay snap reaction with reactionTime
+          $timeout(function () {
+            $scope.checkSnapTakeCentrePile(1);
+          }, $scope.reactionTimeCpu);
+        }
+      }
     }
 
     $scope.checkSnapTakeCentrePile = function (p) {
       if ($scope.centrePileCards.length > 1 && $scope.centrePileCards[0].suit == $scope.centrePileCards[1].suit) {
         $scope.snapper = (p == 0 ? 'Player' : 'CPU') + ' calls snap';
 
-        debugger;
         console.log('player calls snap:', p)
         if (p) {
           $scope.cpuCards = _.union($scope.cpuCards, $scope.centrePileCards);
@@ -88,7 +105,10 @@ angular.module('kitApp')
 
     $scope.start=function(){
       //START GAME
+
+      //choose random player
+      $scope.playerTurn = Math.random() > 0.5 ? 1 : 0;
+
       $scope.startGame($scope.playerTurn, ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'], ['s', 'h', 'd', 'c']);
     }
-
   });
