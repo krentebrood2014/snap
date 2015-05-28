@@ -108,7 +108,7 @@ angular.module('kitApp')
 
       //choose random player
       $scope.playerTurn = Math.random() > 0.5 ? 1 : 0;
-
-      $scope.startGame($scope.playerTurn, ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'], ['s', 'h', 'd', 'c']);
+      $scope.startGame($scope.playerTurn, ['2', '3'], ['h','h']);
+      //$scope.startGame($scope.playerTurn, ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'], ['s', 'h', 'd', 'c']);
     }
   });

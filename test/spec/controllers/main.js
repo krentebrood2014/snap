@@ -4,7 +4,6 @@ describe('Snap test Controller: MainCtrl', function () {
 
   // load the controller's module
   beforeEach(module('kitApp'));
-
   var MainCtrl,
     scope;
 

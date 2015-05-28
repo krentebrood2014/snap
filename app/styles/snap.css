@@ -19,7 +19,7 @@
   background-color: red;
   float:left;
   padding:10px;
-  margin-right: 200px;
+  margin-right: 24px;
 }
 
 .turn
@@ -44,4 +44,21 @@
   float:left;
   padding:10px;
   margin-right: 20px;
+}
+
+img{
+  margin:30px;
+}
+
+#game-table{
+  width:33%;
+  margin:auto;
+}
+
+#game-controls {
+  clear:both;
+  width: 25%;
+  margin: auto;
+  padding: 10px;
+  text-align:center;
 }
