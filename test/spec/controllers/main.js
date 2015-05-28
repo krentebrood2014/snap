@@ -23,4 +23,14 @@ describe('Snap test Controller: MainCtrl', function () {
     expect(scope.centrePileCards.length).toBe(0);
   });
 
+
+  it('cpu takes card and places it on the centrepile',function(){
+    scope.cpuCards=[{number: 6, suit: 'h'},{number: 6, suit: 's'}];
+    scope.centrePileCards =[{number: 6, suit: 'h'},{number: 3, suit: 'h'}];
+    scope.placeCardCentrePile(1);
+    expect(scope.cpuCards.length).toBe(1);
+    expect(scope.centrePileCards.length).toBe(3);
+  });
+
+
 });

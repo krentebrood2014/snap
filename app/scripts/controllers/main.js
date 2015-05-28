@@ -41,7 +41,6 @@ angular.module('kitApp')
     }
 
     //shuffle the cards
-    //shuffle the cards
     $scope.shuffle = function (array) {
       var m = array.length, t, i;
       while (m) {
@@ -53,6 +52,27 @@ angular.module('kitApp')
       return array;
     }
 
-    //start game
-    $scope.startGame($scope.playerTurn, ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'], ['s', 'h', 'd', 'c']);
+    //player p (integer ) picks card from their pile and places it on centre pile
+    $scope.placeCardCentrePile = function (p) {
+      $scope.snapper = '';
+      $scope.winner = '';
+      $scope.snap = false;
+      if (p == 0 && $scope.playerCards.length > 0) {
+        $scope.centrePileCards.unshift($scope.playerCards[0]);
+        $scope.playerCards.splice(0, 1)
+      }
+      else {
+        //cpu
+        if ($scope.cpuCards.length > 0) {
+          $scope.centrePileCards.unshift($scope.cpuCards[0]);
+          $scope.cpuCards.splice(0, 1)
+        }
+      }
+    }
+
+    $scope.start=function(){
+      //START GAME
+      $scope.startGame($scope.playerTurn, ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'], ['s', 'h', 'd', 'c']);
+    }
+
   });
